@@ -7,6 +7,16 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { FlottePage } from "../pages/flotte/flotte";
+import { AjoutVoiturePage } from "../pages/ajout-voiture/ajout-voiture";
+import { ClientPage } from "../pages/client/client";
+import { CreationClientPage } from "../pages/creation-client/creation-client";
+import { LocationPage } from "../pages/location/location";
+import { UserDetailPage } from "../pages/user-detail/user-detail";
+import { CarDetailPage } from "../pages/car-detail/car-detail";
+
+import { HTTP } from "@ionic-native/http";
+import { SQLite } from "@ionic-native/sqlite";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,6 +27,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    FlottePage,
+    AjoutVoiturePage,
+    ClientPage,
+    CreationClientPage,
+    LocationPage,
+    UserDetailPage,
+    CarDetailPage,
     TabsPage
   ],
   imports: [
@@ -29,11 +46,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    FlottePage,
+    AjoutVoiturePage,
+    ClientPage,
+    CreationClientPage,
+    LocationPage,
+    UserDetailPage,
+    CarDetailPage,
     TabsPage
   ],
   providers: [
     StatusBar,
+    HTTP,
     SplashScreen,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
