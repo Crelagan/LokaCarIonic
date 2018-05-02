@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserDetailPage} from "../user-detail/user-detail";
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import {userModel} from "../../model/user.model";
 
 /**
  * Generated class for the ClientPage page.
@@ -20,8 +21,9 @@ const DATABASE_FILE_NAME: string = 'lokacar.db';
 })
 export class ClientPage {
 
+  userTemp : userModel = new userModel();
   private db: SQLiteObject;
-  users: string[] = [];
+  users: userModel[] = [];
   isUser: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
@@ -48,7 +50,6 @@ export class ClientPage {
               this.users = [];
               this.db.executeSql('SELECT * FROM `Client`', {})
                   .then((data) => {
-
                       if(data == null) {
                           this.isUser = false;
                           return;
@@ -58,8 +59,10 @@ export class ClientPage {
                           if(data.rows.length > 0) {
                               this.isUser = true;
                               for(var i = 0; i < data.rows.length; i++) {
-                                  this.users.push(data.rows.item(i).name);
+                                  console.log("User Recuperer : " + data.rows.length + "Item n° " + i + "User : " + data.rows.item(i));
+                                  this.users.push(data.rows.item(i));
                               }
+                              console.log(this.users.length);
                           }
                       }
                   });
