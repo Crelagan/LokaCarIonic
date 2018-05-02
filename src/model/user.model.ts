@@ -1,7 +1,11 @@
 export class userModel {
+    id: number;
     nom: string;
     prenom: string;
-    telephone: string;
     mail: string;
-    permis: string;
+    telephone: number;
+    adresse: string;
+    codePostal: number;
+    ville: string;
+    permis: number;
 }

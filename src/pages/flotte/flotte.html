@@ -5,45 +5,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>
-      Voiture Disponible
-    </ion-list-header>
+  <ion-list *ngIf="!isCar">
+    <div padding>
+      <button ion-button block (tap)="redirect()">Ajouter une voiture a votre flotte</button>
+    </div>
+  </ion-list>
 
-    <button ion-item (click)="itemSelected()">
+  <ion-list *ngIf="isCar">
+    <button ion-item *ngFor="let car of cars" (click)="itemSelected()">
       <ion-avatar item-start>
         <img src="assets/imgs/voiture.png">
       </ion-avatar>
-      <h2>Renault Megane</h2>
-      <h3>15€/jour</h3>
-      <p>Carburant</p>
-    </button>
-
-    <button ion-item (click)="itemSelected()">
-      <ion-avatar item-start>
-        <img src="assets/imgs/voiture.png">
-      </ion-avatar>
-      <h2>Porsche 911</h2>
-      <h3>20€/jour</h3>
-      <p>Essence</p>
-    </button>
-
-    <button ion-item (click)="itemSelected()">
-      <ion-avatar item-start>
-        <img src="assets/imgs/voiture.png">
-      </ion-avatar>
-      <h2>Faucon Millenium</h2>
-      <h3>100€/jour</h3>
-      <p>Carburant</p>
-    </button>
-
-    <button ion-item (click)="itemSelected()">
-      <ion-avatar item-start>
-        <img src="assets/imgs/voiture.png">
-      </ion-avatar>
-      <h2>Batmobile</h2>
-      <h3>50€/jour</h3>
-      <p>Essence</p>
+      <h2>{{ car.marque + " " + car.modele}}</h2>
+      <h3>{{ car.carburant }}</h3>
+      <p>{{ car.Prix }} €/jour</p>
     </button>
   </ion-list>
 </ion-content>

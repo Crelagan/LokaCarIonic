@@ -4,6 +4,7 @@ import {UserDetailPage} from "../user-detail/user-detail";
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import {userModel} from "../../model/user.model";
+import {CreationClientPage} from "../creation-client/creation-client";
 
 /**
  * Generated class for the ClientPage page.
@@ -38,6 +39,11 @@ export class ClientPage {
   itemSelected(){
       this.navCtrl.push(UserDetailPage, {});
   }
+
+  redirect() {
+      this.navCtrl.push(CreationClientPage, {});
+  }
+
 
   private getClients(): void {
       this.sqlite.create({

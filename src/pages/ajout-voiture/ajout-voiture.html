@@ -17,28 +17,61 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Marque</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label>Marque :</ion-label>
+      <ion-input type="text" [(ngModel)]="carMarque"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Modele</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label>Modele :</ion-label>
+      <ion-input type="text" [(ngModel)]="carModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Prix</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label>Prix :</ion-label>
+      <ion-input type="text" [(ngModel)]="carPrix"></ion-input>
+      <ion-note item-end>
+        €/jour
+      </ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-label>Carburant</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label>Immatriculation :</ion-label>
+      <ion-input type="text" [(ngModel)]="carImmat"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Carburant :</ion-label>
+      <ion-select [(ngModel)]="carCarburant">
+        <ion-option value="diesel">Diesel</ion-option>
+        <ion-option value="essence">Essence</ion-option>
+        <ion-option value="gpl">GPL</ion-option>
+        <ion-option value="hybride">Hybride</ion-option>
+        <ion-option value="electrique">electrique</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Boite de vitesse :</ion-label>
+      <ion-select [(ngModel)]="carBoite">
+        <ion-option value="automatique">Automatique</ion-option>
+        <ion-option value="manuelle">Manuelle</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Etat :</ion-label>
+      <ion-select [(ngModel)]="carEtat">
+        <ion-option value="revision">Revision</ion-option>
+        <ion-option value="libre">Libre</ion-option>
+        <ion-option value="loue">Loué</ion-option>
+      </ion-select>
+    </ion-item>
+
+
 
   </ion-list>
 
   <div padding>
-    <button block>Ajouter a la Flotte</button>
+    <button ion-button block (tap)="saveVoiture()">Ajouter a la Flotte</button>
   </div>
 </ion-content>

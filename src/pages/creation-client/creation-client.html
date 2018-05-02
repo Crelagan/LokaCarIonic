@@ -40,7 +40,24 @@
       <ion-label>Permis</ion-label>
       <ion-input type="number" [(ngModel)]="userPermis"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Adresse</ion-label>
+      <ion-input type="text" [(ngModel)]="userAdresse"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Code Postal</ion-label>
+      <ion-input type="number" [(ngModel)]="userCodePostal"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ville</ion-label>
+      <ion-input type="text" [(ngModel)]="userVille"></ion-input>
+    </ion-item>
   </ion-list>
+
+
 
   <div padding>
     <button ion-button block (tap)="saveClient()">Creer la fiche Client</button>
