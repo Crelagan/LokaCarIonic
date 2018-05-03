@@ -5,6 +5,7 @@ import {UserDetailPage} from "../user-detail/user-detail";
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import {userModel} from "../../model/user.model";
 import {CreationClientPage} from "../creation-client/creation-client";
+import {LocationPage} from "../location/location";
 
 /**
  * Generated class for the ClientPage page.
@@ -26,18 +27,31 @@ export class ClientPage {
   private db: SQLiteObject;
   users: userModel[] = [];
   isUser: boolean;
+  isLoc: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
     this.isUser = false;
     this.getClients();
+    this.isLoc = this.navParams.get("isLoc");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClientPage');
   }
 
-  itemSelected(){
-      this.navCtrl.push(UserDetailPage, {});
+  itemSelected(user: userModel){
+      if(this.isLoc)
+      {
+          this.navCtrl.push(LocationPage, {
+              user: user,
+              car: this.navParams.get("car")
+          })
+      }else{
+          this.navCtrl.push(UserDetailPage, {
+              user: user
+          });
+      }
+
   }
 
   redirect() {
@@ -75,5 +89,4 @@ export class ClientPage {
           })
           .catch(e => console.log(e));
   }
-
 }

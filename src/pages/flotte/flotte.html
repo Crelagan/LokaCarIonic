@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Liste des vehicules</ion-title>
+    <ion-title *ngIf="!isLoc">Liste des vehicule</ion-title>
+    <ion-title *ngIf="isLoc">Choix du vehicule</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,13 +13,13 @@
   </ion-list>
 
   <ion-list *ngIf="isCar">
-    <button ion-item *ngFor="let car of cars" (click)="itemSelected()">
+    <button ion-item *ngFor="let car of cars" (click)="itemSelected(car)">
       <ion-avatar item-start>
         <img src="assets/imgs/voiture.png">
       </ion-avatar>
       <h2>{{ car.marque + " " + car.modele}}</h2>
       <h3>{{ car.carburant }}</h3>
-      <p>{{ car.Prix }} €/jour</p>
+      <p>{{ car.prix }} €/jour</p>
     </button>
   </ion-list>
 </ion-content>

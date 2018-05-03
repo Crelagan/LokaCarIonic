@@ -1,20 +1,14 @@
-<!--
-  Generated template for the CarDetailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>carDetail</ion-title>
+    <ion-title>Detail de la voiture</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="isCar">
-    <ion-list no-border *ngFor="let car of cars">
+  <div>
+    <ion-list no-border>
       <ion-list-header>
-        <h2>{{ car.marque + " " + car.modele}}</h2>
+        {{ car.marque + " " + car.modele}}
       </ion-list-header>
 
       <ion-item>
@@ -26,7 +20,23 @@
       </ion-item>
 
       <ion-item>
-        <ion-toggle checked="true"></ion-toggle>
+        <ion-icon name='cog' item-start></ion-icon>
+        Boite de Vitesse :
+        <ion-note item-end>
+          {{ car.boite }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='information-circle' item-start></ion-icon>
+        Immatriculation :
+        <ion-note item-end>
+          {{ car.immat }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-toggle disabled="true" checked="true"></ion-toggle>
         <ion-label>
           Etat :
         </ion-label>
@@ -37,9 +47,13 @@
         <ion-icon name='cash' item-start></ion-icon>
         Prix :
         <ion-note item-end>
-          {{ car.Prix }} €/jour
+          {{ car.prix }} €/jour
         </ion-note>
       </ion-item>
     </ion-list>
+  </div>
+
+  <div padding>
+    <button ion-button block (tap)="locationControl()">Gestion de location</button>
   </div>
 </ion-content>

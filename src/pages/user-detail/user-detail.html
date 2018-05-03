@@ -7,28 +7,60 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>userDetail</ion-title>
+    <ion-title>Fiche Client</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
-  <ion-list>
+  <div>
+    <ion-list no-border>
+      <ion-list-header>
+        {{ user.nom + " " + user.prenom}}
+      </ion-list-header>
 
-    <ion-item>
-      <ion-label>Nom</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-icon name='at' item-start></ion-icon>
+        Mail :
+        <ion-note item-end>
+          {{ user.mail }}
+        </ion-note>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Prenom</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-icon name='call' item-start></ion-icon>
+        Telephone :
+        <ion-note item-end>
+          {{ user.telephone }}
+        </ion-note>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Telephone</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-icon name='card' item-start></ion-icon>
+        permis :
+        <ion-note item-end>
+          {{ user.permis }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='home' item-start></ion-icon>
+        adresse :
+        <ion-note item-end>
+          {{ user.adresse }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='home' item-start></ion-icon>
+        adresse :
+        <ion-note item-end>
+          {{ user.codePostal + " " + user.ville }}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div padding>
+    <button ion-button block (tap)="locationControl()">Nouvelle location</button>
+  </div>
 </ion-content>

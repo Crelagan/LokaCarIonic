@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {carModel} from "../../model/car.model";
+import {ClientPage} from "../client/client";
 
 /**
  * Generated class for the CarDetailPage page.
@@ -15,11 +17,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CarDetailPage {
 
+  car: carModel;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.car = navParams.get('car');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarDetailPage');
   }
 
+  locationControl() {
+      this.navCtrl.push(ClientPage, {
+          car: this.car,
+          isLoc: true
+      });
+  }
 }

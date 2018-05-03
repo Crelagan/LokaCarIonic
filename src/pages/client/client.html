@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Liste des client</ion-title>
+    <ion-title *ngIf="!isLoc">Liste des client</ion-title>
+    <ion-title *ngIf="isLoc">Choix du client</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +13,7 @@
   </div>
 
   <ion-list *ngIf="isUser">
-    <button ion-item *ngFor="let user of users" (click)="itemSelected()">
+    <button ion-item *ngFor="let user of users" (click)="itemSelected(user)">
       <ion-avatar item-start>
         <img src="assets/imgs/user.png">
       </ion-avatar>

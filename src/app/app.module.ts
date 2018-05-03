@@ -20,6 +20,7 @@ import { SQLite } from "@ionic-native/sqlite";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {SelectSearchableModule} from "ionic-select-searchable";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    SelectSearchableModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

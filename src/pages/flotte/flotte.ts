@@ -4,6 +4,7 @@ import {CarDetailPage} from "../car-detail/car-detail";
 import {SQLite, SQLiteObject} from "@ionic-native/sqlite";
 import {carModel} from "../../model/car.model";
 import {AjoutVoiturePage} from "../ajout-voiture/ajout-voiture";
+import {LocationPage} from "../location/location";
 
 const DATABASE_FILE_NAME: string = 'lokacar.db';
 
@@ -18,11 +19,13 @@ export class FlottePage {
     private db: SQLiteObject;
     cars: carModel[] = [];
     isCar: boolean;
+    isLoc: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
       console.log("Flotte constructor");
       this.isCar = false;
       this.getCars();
+      this.isLoc = this.navParams.get("isLoc");
   }
 
   ionViewDidLoad() {
@@ -33,8 +36,19 @@ export class FlottePage {
       this.navCtrl.push(AjoutVoiturePage, {});
   }
 
-  itemSelected(){
-      this.navCtrl.push(CarDetailPage, {});
+  itemSelected(car: carModel){
+      if(this.isLoc){
+          this.navCtrl.push(LocationPage, {
+              user: this.navParams.get("user"),
+              car: car
+          })
+      }else{
+          console.log(" Voiture recu : " + car.marque + " " + car.modele)
+          this.navCtrl.push(CarDetailPage, {
+              car: car
+          });
+      }
+
   }
 
     private getCars(): void {
