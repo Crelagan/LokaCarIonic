@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {userModel} from "../../model/user.model";
-import {ClientPage} from "../client/client";
 import {FlottePage} from "../flotte/flotte";
 
 /**

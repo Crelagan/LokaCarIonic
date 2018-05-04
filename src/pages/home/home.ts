@@ -41,18 +41,18 @@ export class HomePage {
                 this.db.executeSql('CREATE TABLE IF NOT EXISTS `Voiture` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `marque` TEXT NOT NULL, `modele` TEXT NOT NULL, `carburant` TEXT NOT NULL, `boite` TEXT NOT NULL, `immat` TEXT NOT NULL, `prix` INTEGER NOT NULL, `etat` TEXT NOT NULL )', {})
                     .then(() => {
                         console.log('Table Voiture created !');
-                        this.db.executeSql('CREATE TABLE "StatVoiture" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `idVoiture` INTEGER, `nbLoc` INTEGER NOT NULL, `chiffreAffaire` INTEGER NOT NULL, FOREIGN KEY(`idVoiture`) REFERENCES `Voiture`(`id`) )', {})
+                        this.db.executeSql('CREATE TABLE IF NOT EXISTS "StatVoiture" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `idVoiture` INTEGER, `nbLoc` INTEGER NOT NULL, `chiffreAffaire` INTEGER NOT NULL, FOREIGN KEY(`idVoiture`) REFERENCES `Voiture`(`id`) )', {})
                             .then(() => {
                                 console.log('Table StatVoiture created !');
-                                this.db.executeSql('CREATE TABLE `Location` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `idVoiture` INTEGER, `idClient` INTEGER, `dateDebut` TEXT NOT NULL, `datefin` TEXT NOT NULL, `prix` TEXT NOT NULL, `etat` TEXT, FOREIGN KEY(`idClient`) REFERENCES `Client`(`id`), FOREIGN KEY(`idVoiture`) REFERENCES `Voiture`(`id`) )', {})
+                                this.db.executeSql('CREATE TABLE IF NOT EXISTS `Location` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `idVoiture` INTEGER, `idClient` INTEGER, `dateDebut` TEXT NOT NULL, `datefin` TEXT NOT NULL, `prix` TEXT NOT NULL, `etat` TEXT, FOREIGN KEY(`idClient`) REFERENCES `Client`(`id`), FOREIGN KEY(`idVoiture`) REFERENCES `Voiture`(`id`) )', {})
                                     .then(() => console.log('Table Location created !'))
-                                    .catch(e => console.log(e));
+                                    .catch(e => console.log(e.message));
                             })
-                            .catch(e => console.log(e));
+                            .catch(e => console.log(e.message));
                     })
-                    .catch(e => console.log(e));
+                    .catch(e => console.log(e.message));
             })
-            .catch(e => console.log(e));
+            .catch(e => console.log(e.message));
     }
 
     deleteVoiture(){
