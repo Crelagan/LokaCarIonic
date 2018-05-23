@@ -24,9 +24,11 @@ export class LocationPage {
     user: userModel;
 
     public event = {
-        timeStarts: '',
-        timeEnds: '2018-05-05'
+        timeStarts: ''
     };
+
+    prixLoc: number;
+    nbJour: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.car = navParams.get('car');
@@ -36,11 +38,8 @@ export class LocationPage {
       var day = today.getDate();
       var month = today.getMonth()+1;
       var year = today.getFullYear();
-      var dayEnd = day+1;
 
       this.event.timeStarts = year.toString() + "-" +  (month<10 ? "0" + month.toString(): month.toString()) + "-" + (day<10 ? "0" + day.toString(): day.toString());
-      this.event.timeEnds = year.toString() + "-" +  (month<10 ? "0" + month.toString(): month.toString()) + "-" + (dayEnd<10 ? "0" + dayEnd.toString(): dayEnd.toString());
-
   }
 
   ionViewDidLoad() {
@@ -48,6 +47,17 @@ export class LocationPage {
   }
 
     validLocation() {
-        console.log(this.event.timeStarts);
+
+        let jour = +this.nbJour;
+        console.log("validation de la date");
+        console.log("Jour = ", jour);
+        let date = new Date();
+        console.log("date du jour : ",date.getDate());
+        date.setDate(date.getDate() + jour);
+        console.log("date de fin avec jour",date);
+    }
+
+    calculPrix() {
+       this.prixLoc = this.nbJour * this.car.prix;
     }
 }

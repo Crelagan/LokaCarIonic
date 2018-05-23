@@ -6,6 +6,9 @@
 -->
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>location</ion-title>
   </ion-navbar>
 </ion-header>
@@ -32,14 +35,18 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>End Date</ion-label>
-    <ion-datetime min="2018-01-01" max="2099-31-12" displayFormat="D MMMM YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+    <ion-label>nombre de Jour</ion-label>
+    <ion-input type="number" [(ngModel)]="nbJour"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Prix</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="prixLoc"></ion-input>
   </ion-item>
+
+  <div padding>
+    <button ion-button block (click)="calculPrix()">Calculer le prix de location</button>
+  </div>
 
   <div padding>
     <button ion-button block (click)="validLocation()">Valider la location</button>

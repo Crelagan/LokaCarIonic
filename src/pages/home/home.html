@@ -1,8 +1,12 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>Login</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Page Login</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
@@ -44,6 +48,10 @@
 
   <div padding>
     <button ion-button block (tap)="deleteUser()">Supprimer Table User</button>
+  </div>
+
+  <div padding>
+    <button ion-button secondary menuToggle>Toggle Menu</button>
   </div>
 
 </ion-content>
